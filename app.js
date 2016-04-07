@@ -94,9 +94,19 @@ var genres = function(artist, callback) {
       if (error) {
         console.log(error);
         callback('<strong>Something went wrong!</strong>');
-      } else {
+      } 
+      else {
+        //rows dobi iz zgornje SQL poizedbe
+        var temp = '';
+        for(var i = 0; i<rows.length; i++) {
+          // za zadnj izpis ker nocemo | na koncu
+           if(i == rows.length-1)
+             temp += rows[i].Name;
+           else
+             temp += rows[i].Name + "|";
+        }
         var result = '<h5>Genres</h5><div id="genres">' + 
-          'No genres for this artist' + 
+          temp + 
           '</div>';
         callback(result);
       }
