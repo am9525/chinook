@@ -134,6 +134,10 @@ app.get('/artists/:page/details/:artist', function(request, response) {
   });
 });
 
+/* privzeta spletna stran */
+app.get('/', function(request, response) {
+    response.redirect('/artists/1')
+});
 /* responds with specified artist's albums */
 app.get('/albums/:artist', function(request, response) {
   albums(request.params.artist, function(result) {
@@ -191,4 +195,6 @@ app.get('/pages', function(request, response) {
   });
 });
 
-
+app.listen(process.env.PORT, function(){
+  console.log("App listening on port " + process.env.PORT);
+});
